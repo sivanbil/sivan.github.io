@@ -135,12 +135,9 @@ No breakpoints or watchpoints.
 在 gdb 下使用命令 run 或简写 r 来运行当前载入的程序：
 <pre>
 (gdb) r
-Starting program: /home/orange/Desktop/gdb/hello 
-a = 1
-b = 2
-1 + 2 = 3
-[Inferior 1 (process 10415) exited normally]
-
+Starting program: /home/sivan/projects/cpp/hello 
+Hello world
+[Inferior 1 (process 14185) exited normally]
 </pre>
 我这次没有添加断点，程序全速运行，然后正常退出了。
 
