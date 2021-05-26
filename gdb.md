@@ -145,17 +145,26 @@ Hello world
 在 gdb 下使用命令 next 或简写 n 来单步执行下一步，假设我们在 main 打了断点：
 <pre>
 (gdb) b main
-Breakpoint 1 at 0x6e8: file hello.c, line 4.
+Breakpoint 2 at 0x5555555551a9: file hello.cpp, line 6.
 (gdb) r
-Starting program: /home/orange/Desktop/gdb/hello 
+Starting program: /home/sivan/projects/cpp/hello 
 
-Breakpoint 1, main () at hello.c:4
-4       int a = 1;
+Breakpoint 2, main () at hello.cpp:6
+6	{
 (gdb) n
-5       printf("a = %d\n", a);
-
+7		cout << "Hello world" << endl;
+(gdb) n
+Hello world
+8		return 0;
+(gdb) n
+9	}
+(gdb) n
+__libc_start_main (main=0x5555555551a9 <main()>, argc=1, argv=0x7fffffffddc8, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fffffffddb8) at ../csu/libc-start.c:342
+342	../csu/libc-start.c: No such file or directory.
 </pre>
-可以看到当前停在 int a = 1; 这一行，按 n 执行了下一句代码 printf("a = %d\n", a);
+可以看到停在 cout << "Hello world" << endl; 这一行，按 n 执行了下一句代码
 
 ## 10. 跳入，跳出函数
 在 gdb 下使用命令 step 或简写 s 来跳入一个函数，使用 finish 来跳出一个函数，我们在第 14 行 int c = add(a, b); 添加一个断点：
