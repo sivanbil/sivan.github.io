@@ -97,7 +97,7 @@ Reading symbols from hello...done.
 比如我们以第一个为例，在 main 函数上添加断点：
 <pre>
 (gdb) b main
-Breakpoint 1 at 0x6e8: file hello.c, line 4.
+Breakpoint 1 at 0x11a9: file hello.cpp, line 6.
 </pre>
 打印的信息告诉我们在 hello.c 文件的第 4 行，地址 0x6e8 处添加了一个断点，那如何查看断点呢？
 
@@ -107,8 +107,7 @@ Breakpoint 1 at 0x6e8: file hello.c, line 4.
 <pre>
 (gdb) i b
 Num     Type           Disp Enb Address            What
-1       breakpoint     keep y   0x00000000000006e8 in main at hello.c:4
-
+1       breakpoint     keep y   0x00000000000011a9 in main() at hello.cpp:6
 </pre>
 可以看到打印出刚才添加的 main 函数的断点信息：编号，类型，显示状态，是否启用，地址，其他信息，那又如何删除这个断点呢？
 
