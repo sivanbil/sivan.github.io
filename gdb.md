@@ -117,8 +117,7 @@ Num     Type           Disp Enb Address            What
 (gdb) disable 1
 (gdb) i b
 Num     Type           Disp Enb Address            What
-1       breakpoint     keep n   0x00000000000006e8 in main at hello.c:4
-
+1       breakpoint     keep n   0x00000000000011a9 in main() at hello.cpp:6
 </pre>
 可以看到字段「Enb」已经变为 n，表示这个断点已经被禁用了。
 
