@@ -11,7 +11,7 @@
 ## 1. 编译可以调试的程序
 我们平常使用 gcc 编译的程序如果不加 [-g] 选项：
 <pre lang="shell">
-gcc hello.c -o hello
+g++ hello.cpp -o hello
 </pre>
 gdb 会提示该可执行文件没有调试符号，不能调试：
 <pre lang="shell">
@@ -22,7 +22,7 @@ Reading symbols from a.out...(no debugging symbols found)...done.
 
 如果需要让程序可以调试，就必须在编译的时候加上 [-g] 参数：
 <pre>
-gcc -g hello.c -o hello
+g++ hello.cpp -g -o hello
 </pre>
 
 ## 2. 载入要调试的程序
