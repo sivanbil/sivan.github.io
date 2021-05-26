@@ -34,21 +34,34 @@ gdb hello
 </pre>
 载入成功，gdb 会打印一段提示信息，并且命令行前缀变为 (gdb)，下面是我的 Ubuntu 打印的信息：
 <pre lang="shell">
-GNU gdb (Ubuntu 7.11.90.20161005-0ubuntu1) 7.11.90.20161005-git
-Copyright (C) 2016 Free Software Foundation, Inc.
+NU gdb (Ubuntu 9.2-0ubuntu1~20.04) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
 This GDB was configured as "x86_64-linux-gnu".
 Type "show configuration" for configuration details.
 For bug reporting instructions, please see:
 <http://www.gnu.org/software/gdb/bugs/>.
 Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
+    <http://www.gnu.org/software/gdb/documentation/>.
+
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
-Reading symbols from hello...done.
+Reading symbols from hello...
+(gdb) l
+1	#include <iostream>
+2	
+3	using namespace std;
+4	
+5	int main()
+6	{
+7		cout << "Hello world" << endl;
+8		return 0;
+9	}
+(gdb) 
+
 (gdb) q
 
 </pre>
