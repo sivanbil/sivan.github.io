@@ -271,14 +271,9 @@ exit
 
 在 gdb 下使用 wi 启动可视化调试：
 <pre>
-(gdb) wi
+gdb -tui -q hello
 效果如下图所示，上面是代码效果，下面是命令界面：
 ![image](https://user-images.githubusercontent.com/3192587/119617344-5646f600-be34-11eb-8a7a-ea0e3aa85ddd.png)
 
 </pre>
 有了图形界面，就再对照着图形界面将前面的命令再练习练习，看看自己手敲的命令背后到底做了些什么，加深下影响。
-
-- 作者：登龙zZ
-- 链接：https://www.jianshu.com/p/08de5cef2de9
-- 来源：简书
-- 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
