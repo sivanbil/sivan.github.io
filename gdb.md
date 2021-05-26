@@ -1,4 +1,4 @@
-## gdb 的调试步骤
+# gdb 的调试步骤
 
 在 Linux 下既然是使用命令行来调试，顾名思义就是手敲命令来调试程序，大体分为下面几个步骤，后面会详细介绍：
 
@@ -8,7 +8,7 @@
 - 可视化调试
 - 其他调试技术
 
-1. 编译可以调试的程序
+## 1. 编译可以调试的程序
 我们平常使用 gcc 编译的程序如果不加 [-g] 选项：
 <pre lang="shell">
 gcc hello.c -o hello
@@ -25,7 +25,7 @@ Reading symbols from a.out...(no debugging symbols found)...done.
 gcc -g hello.c -o hello
 </pre>
 
-2. 载入要调试的程序
+## 2. 载入要调试的程序
 
 方法一 - gdb 可执行文件
 使用如下的命令来载入可执行文件 `hello` 到 gdb 中：
@@ -70,11 +70,11 @@ Reading symbols from hello...done.
 
 </pre>
 
-3. 查看调试程序
+## 3. 查看调试程序
 在 gdb 下查看调试程序使用命令 list 或简写 l，「回车」列出后面程序：
 
 
-4. 添加断点
+## 4. 添加断点
 在 gdb 下添加断点使用命令 break 或简写 b，有下面几个常见用法（这里统一用 b）：
     b function_name
     b row_num
@@ -88,7 +88,7 @@ Breakpoint 1 at 0x6e8: file hello.c, line 4.
 </pre>
 打印的信息告诉我们在 hello.c 文件的第 4 行，地址 0x6e8 处添加了一个断点，那如何查看断点呢？
 
-5. 查看断点
+## 5. 查看断点
 
 在 gdb 下查看断点使用命令 info break 或简写 i b，比如查看刚才打的断点：
 <pre>
@@ -99,7 +99,7 @@ Num     Type           Disp Enb Address            What
 </pre>
 可以看到打印出刚才添加的 main 函数的断点信息：编号，类型，显示状态，是否启用，地址，其他信息，那又如何删除这个断点呢？
 
-6. 禁用断点
+## 6. 禁用断点
 在 gdb 下禁用断点使用命令 disable Num，比如禁用刚才打的断点：
 <pre>
 (gdb) disable 1
@@ -110,7 +110,7 @@ Num     Type           Disp Enb Address            What
 </pre>
 可以看到字段「Enb」已经变为 n，表示这个断点已经被禁用了。
 
-7. 删除断点
+## 7. 删除断点
 在 gdb 下删除断点使用命令 delete 断点 Num 或简写 d Num，比如删除刚才的 Num = 1 的断点：
 <pre>
 (gdb) d 1
@@ -120,7 +120,7 @@ No breakpoints or watchpoints.
 </pre>
 删除后再次查看断点，提示当前没有断点，说明删除成功啦，下面来运行程序试试。
 
-8. 运行程序
+## 8. 运行程序
 在 gdb 下使用命令 run 或简写 r 来运行当前载入的程序：
 <pre>
 (gdb) r
@@ -133,7 +133,7 @@ b = 2
 </pre>
 我这次没有添加断点，程序全速运行，然后正常退出了。
 
-9. 单步执行下一步
+## 9. 单步执行下一步
 在 gdb 下使用命令 next 或简写 n 来单步执行下一步，假设我们在 main 打了断点：
 <pre>
 (gdb) b main
@@ -149,7 +149,7 @@ Breakpoint 1, main () at hello.c:4
 </pre>
 可以看到当前停在 int a = 1; 这一行，按 n 执行了下一句代码 printf("a = %d\n", a);
 
-10. 跳入，跳出函数
+## 10. 跳入，跳出函数
 在 gdb 下使用命令 step 或简写 s 来跳入一个函数，使用 finish 来跳出一个函数，我们在第 14 行 int c = add(a, b); 添加一个断点：
 <pre>
 (gdb) b 14
@@ -180,7 +180,7 @@ Value returned is $1 = 3
     程序运行并停到 int c = add(a, b); 这一行
     s 跳入 add 函数
     finish 跳出 add 函数，并输出一些函数返回的信息
-11. 打印变量
+## 11. 打印变量
 
 在 gdb 中使用命令 print var 或简写 p var 来打印一个变量或者函数的返回值，我们在第 10 行 int b = 2; 添加一个断点：
 <pre>
@@ -197,7 +197,7 @@ $1 = 1
 </pre>
 我们打印出变量 a 的值为 1，在调试中比较频繁的操作是「监视变量」，在 gdb 中如何做呢？
 
-12. 监控变量
+## 12. 监控变量
 
 在 gdb 中使用命令 watch var 来监控一个变量，使用 info watch 来查看监控的变量，我们这里来监控变量 c：
 
@@ -220,7 +220,7 @@ Num     Type           Disp Enb Address            What
 </pre>
 注意：程序必须要先运行才能监控。
 
-13. 查看变量类型
+## 13. 查看变量类型
 
 在 gdb 下使用命令 whatis 查看一个变量的类型：
 <pre>
@@ -237,7 +237,7 @@ type = int
 </pre>
 这里变量 b 是 int 类型。
 
-14. 在 gdb 中进入 shell
+## 14. 在 gdb 中进入 shell
 
 在 gdb 下使用命令 shell 启动 shell ：
 <pre>
@@ -249,7 +249,7 @@ exit
 </pre>
 使用 exit 会再次退回到 gdb 中。
 
-15. 在 gdb 中实现可视化调试
+## 15. 在 gdb 中实现可视化调试
 谁说 gdb 只能在命令行调试呢？gdb 也支持「图形界面」，不过这里的图形界面都是用字符显示的，当然不如 VS 那种好看，不过使用可视化相比直接看命令行更加直观了。
 
 在 gdb 下使用 wi 启动可视化调试：
@@ -261,7 +261,7 @@ exit
 </pre>
 有了图形界面，就再对照着图形界面将前面的命令再练习练习，看看自己手敲的命令背后到底做了些什么，加深下影响。
 
-作者：登龙zZ
-链接：https://www.jianshu.com/p/08de5cef2de9
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+- 作者：登龙zZ
+- 链接：https://www.jianshu.com/p/08de5cef2de9
+- 来源：简书
+- 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
